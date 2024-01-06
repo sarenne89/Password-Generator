@@ -156,8 +156,40 @@ function getRandom() {
   for (let index = 0; index < chosenOptions.passLength; index++) {
     randomStage.push(charsArray[Math.floor(Math.random() * charsArray.length)]);
   }
+  // Now ensure that at least one of each selected char type is in the password
+  if (chosenOptions.lowercase === true) {
+    randomStage.splice(
+      0,
+      1,
+      lowerCasedCharacters[
+        Math.floor(Math.random() * lowerCasedCharacters.length)
+      ]
+    );
+  }
+  if (chosenOptions.uppercase === true) {
+    randomStage.splice(
+      1,
+      1,
+      upperCasedCharacters[
+        Math.floor(Math.random() * upperCasedCharacters.length)
+      ]
+    );
+  }
+  if (chosenOptions.numbers === true) {
+    randomStage.splice(
+      2,
+      1,
+      numericCharacters[Math.floor(Math.random() * numericCharacters.length)]
+    );
+  }
+  if (chosenOptions.special === true) {
+    randomStage.splice(
+      3,
+      1,
+      specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
+    );
+  }
   console.log(randomStage);
-  debugger;
   return randomStage;
 }
 
