@@ -88,15 +88,25 @@ var upperCasedCharacters = [
   "Z",
 ];
 
+let chosenOptions = {};
+
 // Function to prompt user for password options
 
-function getPasswordOptions() {}
-
+function getPasswordOptions() {
+  chosenOptions = Object.create(chosenOptions);
+  chosenOptions.lowercase = confirm("Use lowercase letters?");
+  chosenOptions.uppercase = confirm("Use uppercase letters?");
+  chosenOptions.numbers = confirm("Use numbers?");
+  chosenOptions.special = confirm("Use special characters?");
+  debugger;
+  return chosenOptions;
+}
 // Function for getting a random element from an array
 function getRandom(arr) {}
 
 // Function to generate password with user input
 function generatePassword() {
+  getPasswordOptions();
   return "password";
 }
 
