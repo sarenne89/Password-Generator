@@ -126,18 +126,27 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(arr) {
   if (chosenOptions.lowercase === true) {
-    passwordArray.concat(lowerCasedCharacters);
+    for (let i = 0; i < lowerCasedCharacters.length; i++) {
+      passwordArray.push(lowerCasedCharacters[i]);
+    }
   }
   if (chosenOptions.uppercase === true) {
-    passwordArray.concat(upperCasedCharacters);
+    for (let i = 0; i < upperCasedCharacters.length; i++) {
+      passwordArray.push(upperCasedCharacters[i]);
+    }
   }
   if (chosenOptions.numbers === true) {
-    passwordArray.concat(numericCharacters);
+    for (let i = 0; i < numericCharacters.length; i++) {
+      passwordArray.push(numericCharacters[i]);
+    }
   }
   if (chosenOptions.special === true) {
-    passwordArray.concat(specialCharacters);
+    for (let i = 0; i < specialCharacters.length; i++) {
+      passwordArray.push(specialCharacters[i]);
+    }
   }
   debugger;
+  return passwordArray;
 }
 
 // Function to generate password with user input
