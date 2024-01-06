@@ -89,6 +89,7 @@ var upperCasedCharacters = [
 ];
 
 let chosenOptions = {};
+let passwordArray = [];
 
 // Function to prompt user for password options
 
@@ -114,7 +115,9 @@ function getPasswordOptions() {
       getPasswordOptions();
   } else if (chosenOptions.passLength > 128) {
     alert("Your password must be 128 characters or less"), getPasswordOptions();
-  } else if (typeof chosenOptions.passLength === "string") {
+  }
+
+  if (typeof chosenOptions.passLength === isNan) {
     alert("You must choose a number for your password length!"),
       getPasswordOptions();
   }
@@ -126,6 +129,7 @@ function getRandom(arr) {}
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
+  getRandom();
   return "password";
 }
 
