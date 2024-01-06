@@ -91,6 +91,7 @@ var upperCasedCharacters = [
 let chosenOptions = {};
 let charsArray = [];
 let randomStage = [];
+let password = "";
 
 // Function to prompt user for password options
 
@@ -190,6 +191,9 @@ function getRandom() {
     );
   }
   console.log(randomStage);
+  randomStage.sort(function () {
+    return 0.5 - Math.random();
+  });
   return randomStage;
 }
 
@@ -198,7 +202,8 @@ function generatePassword() {
   getPasswordOptions();
   useableChars();
   getRandom();
-  return "password";
+  let password = randomStage.join("");
+  return password;
 }
 
 // Get references to the #generate element
