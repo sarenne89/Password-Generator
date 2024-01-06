@@ -117,14 +117,28 @@ function getPasswordOptions() {
     alert("Your password must be 128 characters or less"), getPasswordOptions();
   }
 
-  if (typeof chosenOptions.passLength === isNan) {
+  if (typeof chosenOptions.passLength === isNaN) {
     alert("You must choose a number for your password length!"),
       getPasswordOptions();
   }
   return chosenOptions;
 }
 // Function for getting a random element from an array
-function getRandom(arr) {}
+function getRandom(arr) {
+  if (chosenOptions.lowercase === true) {
+    passwordArray.concat(lowerCasedCharacters);
+  }
+  if (chosenOptions.uppercase === true) {
+    passwordArray.concat(upperCasedCharacters);
+  }
+  if (chosenOptions.numbers === true) {
+    passwordArray.concat(numericCharacters);
+  }
+  if (chosenOptions.special === true) {
+    passwordArray.concat(specialCharacters);
+  }
+  debugger;
+}
 
 // Function to generate password with user input
 function generatePassword() {
