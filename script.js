@@ -109,17 +109,15 @@ function getPasswordOptions() {
   chosenOptions.passLength = prompt(
     "How long should it be? Choose a number between 8 and 128."
   );
-  if (
-    chosenOptions.passLength > 128 ||
-    chosenOptions.passlength < 8 ||
-    chosenOptions.passLength === NaN
-  ) {
-    alert(
-      "Your password should be at least 8 characters long but no longer than 128 characters."
-    ),
+  if (8 > chosenOptions.passLength) {
+    alert("Your password must be longer than 8 characters."),
+      getPasswordOptions();
+  } else if (chosenOptions.passLength > 128) {
+    alert("Your password must be 128 characters or less"), getPasswordOptions();
+  } else if (typeof chosenOptions.passLength === "string") {
+    alert("You must choose a number for your password length!"),
       getPasswordOptions();
   }
-  debugger;
   return chosenOptions;
 }
 // Function for getting a random element from an array
