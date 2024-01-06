@@ -89,7 +89,8 @@ var upperCasedCharacters = [
 ];
 
 let chosenOptions = {};
-let passwordArray = [];
+let charsArray = [];
+let randomStage = [];
 
 // Function to prompt user for password options
 
@@ -123,35 +124,47 @@ function getPasswordOptions() {
   }
   return chosenOptions;
 }
-// Function for getting a random element from an array
-function getRandom(arr) {
+
+// determine useable characters
+function useableChars() {
+  //let charsArray = [];
   if (chosenOptions.lowercase === true) {
     for (let i = 0; i < lowerCasedCharacters.length; i++) {
-      passwordArray.push(lowerCasedCharacters[i]);
+      charsArray.push(lowerCasedCharacters[i]);
     }
   }
   if (chosenOptions.uppercase === true) {
     for (let i = 0; i < upperCasedCharacters.length; i++) {
-      passwordArray.push(upperCasedCharacters[i]);
+      charsArray.push(upperCasedCharacters[i]);
     }
   }
   if (chosenOptions.numbers === true) {
     for (let i = 0; i < numericCharacters.length; i++) {
-      passwordArray.push(numericCharacters[i]);
+      charsArray.push(numericCharacters[i]);
     }
   }
   if (chosenOptions.special === true) {
     for (let i = 0; i < specialCharacters.length; i++) {
-      passwordArray.push(specialCharacters[i]);
+      charsArray.push(specialCharacters[i]);
     }
   }
+  return charsArray;
+}
+
+// Function for getting a random element from an array
+function getRandom() {
+  for (let index = 0; index < chosenOptions.passLength; index++) {
+    randomStage.push(charsArray[Math.floor(Math.random() * charsArray.length)]);
+  }
+  console.log(randomStage);
   debugger;
-  return passwordArray;
+  return randomStage;
 }
 
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
+  useableChars();
   getRandom();
   return "password";
 }
