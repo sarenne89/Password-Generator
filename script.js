@@ -98,6 +98,27 @@ function getPasswordOptions() {
   chosenOptions.uppercase = confirm("Use uppercase letters?");
   chosenOptions.numbers = confirm("Use numbers?");
   chosenOptions.special = confirm("Use special characters?");
+  if (
+    chosenOptions.lowercase === false &&
+    chosenOptions.uppercase === false &&
+    chosenOptions.numbers === false &&
+    chosenOptions.special === false
+  ) {
+    alert("You must choose some parameters!!!"), getPasswordOptions();
+  }
+  chosenOptions.passLength = prompt(
+    "How long should it be? Choose a number between 8 and 128."
+  );
+  if (
+    chosenOptions.passLength > 128 ||
+    chosenOptions.passlength < 8 ||
+    chosenOptions.passLength === NaN
+  ) {
+    alert(
+      "Your password should be at least 8 characters long but no longer than 128 characters."
+    ),
+      getPasswordOptions();
+  }
   debugger;
   return chosenOptions;
 }
