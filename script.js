@@ -96,6 +96,8 @@ let password = "";
 // Function to prompt user for password options
 
 function getPasswordOptions() {
+  charsArray = [];
+  randomStage = [];
   chosenOptions = Object.create(chosenOptions);
   chosenOptions.lowercase = confirm("Use lowercase letters?");
   chosenOptions.uppercase = confirm("Use uppercase letters?");
@@ -109,6 +111,7 @@ function getPasswordOptions() {
   ) {
     alert("You must choose some parameters!!!"), getPasswordOptions();
   }
+  chosenOptions.passLength = "";
   chosenOptions.passLength = prompt(
     "How long should it be? Choose a number between 8 and 128."
   );
@@ -128,7 +131,6 @@ function getPasswordOptions() {
 
 // determine useable characters
 function useableChars() {
-  //let charsArray = [];
   if (chosenOptions.lowercase === true) {
     for (let i = 0; i < lowerCasedCharacters.length; i++) {
       charsArray.push(lowerCasedCharacters[i]);
@@ -190,7 +192,8 @@ function getRandom() {
       specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
     );
   }
-  console.log(randomStage);
+
+  //Now we sort them randomly to make sure the first character types aren't always the same.
   randomStage.sort(function () {
     return 0.5 - Math.random();
   });
@@ -203,6 +206,7 @@ function generatePassword() {
   useableChars();
   getRandom();
   let password = randomStage.join("");
+
   return password;
 }
 
